@@ -1,6 +1,6 @@
 # resizeAndWatermark
 
-Plugin for GIMP that can add "watermark" to selected coordinates, resize and export it
+Plugin for GIMP that can add "watermark" to selected coordinates, resize the image and export it
 
 ## How to install
 
