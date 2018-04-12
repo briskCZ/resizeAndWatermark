@@ -17,16 +17,19 @@ def do_stuff(img, drw, wtm_toggle, w_offset, h_offset, path, rsz_toggle, exp_tog
         wtm_height = pdb.gimp_drawable_height(watermark)
 
         watermark = pdb.gimp_item_transform_2d(watermark, wtm_width, wtm_height, 1, 1, 0, img_width - w_offset, img_height - h_offset)
-        flat = pdb.gimp_image_flatten(img)
+        drw = pdb.gimp_image_flatten(img)
     
     #if rsz_toggle == 1:
         #pdb.gimp_image_scale(img, 2000, 1335)
 
     if exp_toggle == 1:
         filename = pdb.gimp_image_get_filename(img)
+        if filename == None:
+            filename = "new_file.jpg"
+		
         fullpath = os.path.join(exp_path, filename)
-        pdb.file_jpeg_save(image, drawable, filename, raw_filename, quality, smoothing, optimize, progressive, comment, subsmp, baseline, restart, dct)
-        pdb.file_jpeg_save(img, drw, fullpath, filename, 0.9, 0, 1, 1, None, 2, 1, 0, 0)
+        #pdb.file_jpeg_save(image, drawable, filename, raw_filename, quality, smoothing, optimize, progressive, comment, subsmp, baseline, restart, dct)
+        pdb.file_jpeg_save(img, drw, fullpath, filename, 0.9, 0, 1, 1, "", 2, 1, 0, 0)
 
     pdb.gimp_undo_push_group_end(img)
 
