@@ -33,10 +33,13 @@ def do_stuff(img, drw, wtm_toggle, w_offset, h_offset, path, rsz_toggle, exp_tog
         filename = pdb.gimp_image_get_filename(img)
         if filename == None:
             filename = "new_file.jpg"
+        else:
+            filename = os.path.split(filename)[1]
+            filename = filename[:-4] + "_edit" + filename[-4:]
 
         fullpath = os.path.join(exp_path, filename)
         #pdb.file_jpeg_save(image, drawable, filename, raw_filename, quality, smoothing, optimize, progressive, comment, subsmp, baseline, restart, dct)
-        pdb.file_jpeg_save(img, drw, fullpath, filename, 0.98, 0, 1, 1, "", 2, 1, 0, 0)
+        pdb.file_jpeg_save(img, drw, fullpath, "wtf.jpg", 0.98, 0, 1, 1, "", 2, 1, 0, 0)
 
     pdb.gimp_undo_push_group_end(img)
 
