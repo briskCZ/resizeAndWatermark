@@ -10,16 +10,19 @@ def do_stuff(img, drw, wtm_toggle, w_offset, h_offset, path, rsz_toggle, exp_tog
     img_height = pdb.gimp_image_height(img)
 
     if wtm_toggle == 1:
-        watermark =  pdb.gimp_file_load_layer(img,path)
-        pdb.gimp_image_insert_layer(img, watermark, None, 0)
+        
+        if(os.path.isfile(path)):
+            watermark = pdb.gimp_file_load_layer(img,path)
 
-        wtm_width = pdb.gimp_drawable_width(watermark)
-        wtm_height = pdb.gimp_drawable_height(watermark)
+            pdb.gimp_image_insert_layer(img, watermark, None, 0)
 
-        watermark = pdb.gimp_item_transform_2d(watermark, wtm_width, wtm_height, 1, 1, 0, img_width - w_offset, img_height - h_offset)
-        drw = pdb.gimp_image_flatten(img)
+            wtm_width = pdb.gimp_drawable_width(watermark)
+            wtm_height = pdb.gimp_drawable_height(watermark)
+
+            watermark = pdb.gimp_item_transform_2d(watermark, wtm_width, wtm_height, 1, 1, 0, img_width - w_offset, img_height - h_offset)
+            drw = pdb.gimp_image_flatten(img)
     
-    if rsz_toggle == 1:
+    if rsz_toggle == 1: #TODO pridat zadavani velikosti
         if img_width >= img_height:
             pdb.gimp_image_scale(img, 2000, 1335)
         
