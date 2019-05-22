@@ -13,5 +13,3 @@ Run the plugin from the *"Filters"* menu.
 ## TODO:
 
 ## KNOWN BUGS:
-
-Exportings owerwrites the source file and doesn't care about user changeable path
