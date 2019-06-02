@@ -12,4 +12,6 @@ Run the plugin from the *"Filters"* menu.
 
 ## TODO:
 
+Add corner selection.
+
 ## KNOWN BUGS:
