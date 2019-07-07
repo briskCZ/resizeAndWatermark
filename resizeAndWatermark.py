@@ -8,7 +8,17 @@ def do_stuff(img, drw, wtm_toggle, side_radio, w_offset, h_offset, path, rsz_tog
 		
 	img_width = pdb.gimp_image_width(img)
 	img_height = pdb.gimp_image_height(img)
-	
+		
+	if rsz_toggle == 1: #TODO pridat zadavani velikosti
+		if img_width >= img_height:
+			pdb.gimp_image_scale(img, 2000, 1335)
+		
+		if img_width < img_height:
+			pdb.gimp_image_scale(img, 1335, 2000)
+
+	img_width = pdb.gimp_image_width(img)
+	img_height = pdb.gimp_image_height(img)
+			
 	if wtm_toggle == 1:
 		try:
 			watermark = pdb.gimp_file_load_layer(img,path)
@@ -28,14 +38,6 @@ def do_stuff(img, drw, wtm_toggle, side_radio, w_offset, h_offset, path, rsz_tog
 			
 		except Exception as e:
 			pdb.gimp_message("Wrong file entered!")
-
-	
-	if rsz_toggle == 1: #TODO pridat zadavani velikosti
-		if img_width >= img_height:
-			pdb.gimp_image_scale(img, 2000, 1335)
-		
-		if img_width < img_height:
-			pdb.gimp_image_scale(img, 1335, 2000)
 
 	if exp_toggle == 1:
 		filename = pdb.gimp_image_get_filename(img)
